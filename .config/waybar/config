@@ -1,0 +1,12 @@
+{
+    "layer": "top",
+    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-center": ["sway/window"],
+    "modules-right": ["pulseaudio", "tray", "custom/weather", "clock"],
+    "custom/weather": {
+        "format": "{}",
+        "interval": 300,
+        "exec": "curl -s 'https://de.wttr.in/?format=1'",
+        "exec-if": "ping wttr.in -c1"
+    }
+}

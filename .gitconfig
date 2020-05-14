@@ -1,0 +1,9 @@
+[user]
+	email = jan@baudisch.xyz
+	name = Jan Baudisch
+[commit]
+	gpgsign = true
+[core]
+	editor = nano
+[push]
+	followTags = true

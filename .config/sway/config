@@ -1,0 +1,268 @@
+#############
+# VARIABLES #
+#############
+
+# mod key
+set $mod Mod4
+
+# programs
+set $menu rofi -show run
+set $terminal alacritty
+set $files nautilus
+set $browser firefox
+set $mail evolution
+#set $cloud owncloud
+#set $dropbox dropbox start
+#set $music rhythmbox
+set $signal flatpak run org.signal.Signal
+set $spotify flatpak run org.spotify.Client
+#set $automount udiskie &
+#set $redshift redshift-wlr
+set $kdeconnect kdeconnect-indicator
+#set $pulseaudio pulseaudio --start
+
+##########
+# OUTPUT #
+##########
+
+# wallpaper
+output * bg ${HOME}/Pictures/wallpaper.jpg fill
+
+#############
+# STATUSBAR #
+#############
+
+bar {
+    swaybar_command waybar
+}
+
+############
+# KEYBOARD #
+############
+
+input type:keyboard {
+    xkb_layout de
+}
+
+#######
+# GTK #
+#######
+
+#set $gnome-schema org.gnome.desktop.interface
+
+exec_always {
+#    gsettings set $gnome-schema gtk-theme 'Plata-Lumine'
+#    gsettings set $gnome-schema icon-theme 'Papirus'
+#    gsettings set $gnome-schema font-name 'Roboto'
+#    gsettings set $gnome-schema monospace-font-name 'RobotoMono Nerd Font Mono'
+}
+
+##############
+# APPEARANCE #
+##############
+
+#font Roboto 10
+
+########
+# IDLE #
+########
+
+#exec swayidle -w \
+#         timeout 600 'swaylock -f -c 000000' \
+#         timeout 1200 'swaymsg "output * dpms off"' \
+#              resume 'swaymsg "output * dpms on"' \
+#         before-sleep 'swaylock -f -c 000000'
+
+###############
+# KEYBINDINGS #
+###############
+
+# terminal
+bindsym $mod+Return exec $terminal
+
+# files
+bindsym $mod+Shift+f exec $files
+
+#browser
+bindsym $mod+Shift+b exec $browser
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# launcher
+bindsym $mod+d exec $menu
+
+# media
+bindsym XF86AudioPlay playerctl play-pause
+bindsym XF86AudioStop playerctl stop
+bindsym XF86AudioPrev playercttl previous
+bindsym XF86AudioNext playerctl next
+bindsym XF86AudioRaiseVolume pactl set-sink-volume 1 +5%
+bindsym XF86AudioLowerVolume pactl set-sink-volume 1 -5%
+
+# Drag floating windows by holding down $mod and left mouse button.
+# Resize them with right mouse button + $mod.
+# Despite the name, also works for non-floating windows.
+# Change normal to inverse to use left mouse button for resizing and right
+# mouse button for dragging.
+floating_modifier $mod normal
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# exit
+bindsym $mod+Shift+e exec swaymsg exit
+
+# move focus
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move windows
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+##############
+# WORKSPACES #
+##############
+
+set $workspace1 "1: Firefox"
+set $workspace2 "2: Terminal"
+set $workspace3 "3: Files"
+set $workspace8 "8: Evolution"
+set $workspace9 "9: Signal"
+set $workspace10 "10: Music"
+
+# open in workspace
+assign [app_id="firefox"] $workspace1
+assign [class="Firefox"] $workspace1
+assign [app_id="Alacritty"] $workspace2
+assign [app_id="org.gnome.Nautilus"] $workspace3
+assign [app_id="evolution"] $workspace8
+assign [class="Signal"] $workspace9
+assign [app_id="rhythmbox"] $workspace10
+
+# enable floating
+for_window [app_id="desktopclient.owncloud.com.owncloud"] floating enable
+
+# switch
+bindsym $mod+1 workspace $workspace1
+bindsym $mod+2 workspace $workspace2
+bindsym $mod+3 workspace $workspace3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace $workspace8
+bindsym $mod+9 workspace $workspace9
+bindsym $mod+0 workspace $workspace10
+
+# move
+bindsym $mod+Shift+1 move container to workspace $workspace1
+bindsym $mod+Shift+2 move container to workspace $workspace2
+bindsym $mod+Shift+3 move container to workspace $workspace3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace $workspace8
+bindsym $mod+Shift+9 move container to workspace $workspace9
+bindsym $mod+Shift+0 move container to workspace $workspace10
+
+##########
+# LAYOUT #
+##########
+
+# You can "split" the current object of your focus with
+# $mod+b or $mod+v, for horizontal and vertical splits
+# respectively.
+bindsym $mod+b splith
+bindsym $mod+v splitv
+
+# Switch the current container between different layout styles
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# Make the current focus fullscreen
+bindsym $mod+f fullscreen
+
+# Toggle the current focus between tiling and floating mode
+bindsym $mod+Shift+space floating toggle
+
+# Swap focus between the tiling area and the floating area
+bindsym $mod+space focus mode_toggle
+
+# move focus to the parent container
+bindsym $mod+a focus parent
+
+
+########
+# TODO #
+########
+
+gaps outer 15
+gaps inner 10
+
+default_border pixel none
+default_floating_border pixel none
+
+##############
+# SCRATCHPAD #
+##############
+
+# Sway has a "scratchpad", which is a bag of holding for windows.
+# You can send windows there and get them back later.
+
+# Move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $mod+minus scratchpad show
+
+##########
+# RESIZE #
+##########
+
+mode "resize" {
+    # left will shrink the containers width
+    # right will grow the containers width
+    # up will shrink the containers height
+    # down will grow the containers height
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
+
+    # return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+#################
+# NOTIFICATIONS #
+#################
+
+exec mako --anchor top-right
+
+#############
+# AUTOSTART #
+#############
+
+#exec $redshift
+exec $browser
+#exec $mail
+exec $terminal
+exec $files
+#exec $music
+exec $cloud
+#exec $dropbox
+exec $signal
+exec $kdeconnect
+#exec $automount
