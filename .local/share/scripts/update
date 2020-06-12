@@ -3,4 +3,5 @@ set -e
 sudo dnf upgrade -y --refresh
 flatpak update -y
 rupdate
+sdkmanager --update
 flutter upgrade

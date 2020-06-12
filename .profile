@@ -16,15 +16,8 @@ export PATH=$PATH:$DART_SDK/bin
 
 export PATH=$FLUTTER_SDK/bin:$PATH
 
-export PATH=$ANDROID_HOME/tools:$PATH
-export PATH=$ANDROID_HOME/tools/bin:$PATH
+export PATH=$ANDROID_HOME/cmdline-tools/tools/bin:$PATH
 export PATH=$ANDROID_HOME/platform-tools:$PATH
-
-ANDROID_TOOLCHAINS=$HOME/.android/toolchains
-export PATH=$ANDROID_TOOLCHAINS/arm/bin:$PATH
-export PATH=$ANDROID_TOOLCHAINS/arm64/bin:$PATH
-export PATH=$ANDROID_TOOLCHAINS/x86/bin:$PATH
-export PATH=$ANDROID_TOOLCHAINS/x86_64/bin:$PATH
 
 export GPG_TTY=$(tty)
 
