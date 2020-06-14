@@ -5,3 +5,4 @@ flatpak update -y
 rupdate
 sdkmanager --update
 flutter upgrade
+rclone sync Dropbox:/ $HOME/Dropbox -P
