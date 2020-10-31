@@ -1,9 +1,13 @@
 #!/bin/sh
 set -e
 sudo dnf upgrade -y --refresh
+if command -v brl &> /dev/null
+then
+  brlupdate
+fi
 flatpak update -y
+flatpak remove --unused
 rupdate
 sdkmanager --update
 flutter upgrade
 flutter config --no-analytics
-rclone sync Dropbox:/ $HOME/Dropbox -P
