@@ -19,7 +19,7 @@ easy to script.
 
 ### `.config`
 
-#### Alacritty
+#### [Alacritty][alacritty]
 
 Not used right now.
 
@@ -27,23 +27,23 @@ Not used right now.
 
 Stores the config containing my printer setup. Not really reusable.
 
-#### Fish
+#### [Fish][fish]
 
-Uses bass to source my bash-like profile, nothing more (for now).
+Uses [bass][bass] to source my bash-like profile, nothing more (for now).
 
-#### Redshift
-
-Not used right now.
-
-#### Rofi
+#### [Redshift][redshift]
 
 Not used right now.
 
-#### Sway
+#### [Rofi][rofi]
 
 Not used right now.
 
-#### Waybar
+#### [Sway][sway]
+
+Not used right now.
+
+#### [Waybar][waybar]
 
 Not used right now.
 
@@ -56,13 +56,13 @@ the `$PATH` by `.profile`.
 
 #### `brlupdate`
 
-Updates bedrock and the arch strata via trizen.
+Updates [Bedrock Linux][bedrock] and the arch strata via [trizen][trizen].
 
 _Uses `sudo`._
 
 #### `rupdate`
 
-Updates the Rust toolchain via `rustup` and uses `cargo-install` to update all
+Updates the [Rust][rust] toolchain via [`rustup`][rustup] and uses [cargo-update][cargo-update] to update all
 Cargo-installed crates.
 
 #### `update`
@@ -71,10 +71,10 @@ Updates:
 
  1. Fedora (`dnf`)
  2. Bedrock if available (`brlupdate`)
- 3. Flatpak + removes unused
+ 3. [Flatpak][flatpak] + removes unused
  4. Rust (`rupdate`)
- 5. Android SDK
- 6. Flutter + disables analytics
+ 5. [Android SDK][android]
+ 6. [Flutter][flutter] + disables analytics
 
 _Uses `sudo`._
 
@@ -82,7 +82,7 @@ _Uses `sudo`._
 
 ### Everything else
 
-#### Bash
+#### [Bash][bash]
 
 Just redirects to the general profile. `.bash_profile` sources `.bashrc` which
 in turn sources `.profile`.
@@ -95,8 +95,8 @@ in turn sources `.profile`.
 
 #### Profile
 
-`.profile` contains the shell configuration. `lsd` is used as an `ls`
-replacement, Rust, Dart, Flutter and Android SDK are set up.
+`.profile` contains the shell configuration. [`lsd`][lsd] is used as an `ls`
+replacement, Rust, [Dart][dart], Flutter and Android SDK are set up.
 
 The following paths are used:
 
@@ -104,4 +104,24 @@ The following paths are used:
  - Dart: `~/.dart-sdk`
  - Flutter: `~/.flutter-sdk`
 
-Also, GnuPG is configured to use a smartcard and provide SSH authentication.
+Also, [GnuPG][gnupg] is configured to use a smartcard and provide SSH authentication.
+
+[alacritty]: https://github.com/alacritty/alacritty
+[fish]: https://fishshell.com
+[bass]: https://github.com/edc/bass
+[redshift]: http://jonls.dk/redshift
+[rofi]: https://github.com/davatorium/rofi
+[sway]: https://swaywm.org
+[waybar]: https://github.com/Alexays/Waybar
+[bedrock]: https://bedrocklinux.org
+[trizen]: https://github.com/trizen/trizen
+[rust]: https://rust-lang.org
+[rustup]: https://rustup.rs
+[cargo-update]: https://github.com/nabijaczleweli/cargo-update
+[flatpak]: https://flatpak.org
+[android]: https://developer.android.com/studio
+[flutter]: https://flutter.dev
+[bash]: https://gnu.org/software/bash
+[dart]: https://dart.dev
+[lsd]: https://github.com/Peltoche/lsd
+[gnupg]: https://gnupg.org
